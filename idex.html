@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Kvadrātvienādijumu risinātājs</h1>
+    <input type="number" id="a1" placeholder="a">
+    <input type="number" id="b1" placeholder="b">
+    <input type="number" id="c1" placeholder="c">
+    <button onclick="aprekinat()">Aprēķināt</button>
+    <div class="rezultats" id="rezultats"></div>
+    <script>
+
+  function saknes(a,b, D) {
+    if (D<0){
+    return false;
+  } else{
+    var x1 = (-b + Math.sqrt(D))/ (2*a)
+    var x2 = (-b - Math.sqrt(D))/ (2*a)
+    return [x1, x2];
+  }
+  }
+function aprekinat(){
+var a=Number(a.value);
+var b=Number(b.value);
+var c=Number(c.value);
+
+if (isNaN(a) || isNaN(b) ||isNaN(c) || a === 0) {
+    rezultats.innerHTML = "Lūdzu ievadi korektus koeficentus!"
+    return;
+}
+
+var atb= saknes(a,b, disk(a,b,c));
+if (atb === false){
+    rezultats.innerHTML = "Kvadrātvienādojumam nav reālu sakņu.";
+    }
+    else{
+        rezultats.innerHTML = `Saknes: x1 = ${atb[0].toFixed(3)}, x2 = ${atb[1].toFixed(3)}`;
+    }}
+
+    </script>
+</body>
+</html>
